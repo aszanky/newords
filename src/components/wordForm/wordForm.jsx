@@ -22,10 +22,10 @@ export default class WordForm extends Component {
       }
 
       const result = await response.json();
-      message.success(`word ${result.word} added successfully!`);
+      message.success(`word ${result.word.word} added successfully!`);
     } catch (error) {
       console.error("Error adding word:", error);
-      message.error('Failed to add user. Please try again.');
+      message.error('Failed to add word. Please try again.');
     }
   };
 
