@@ -45,32 +45,6 @@ function App() {
     }
   };
 
-  const addYourWords = async () => {
-    setShowForm(!showForm);
-
-    const myWords = { word, indonesian, notes };
-
-    try {
-      const response = await fetch(`$baseURL/add`, {  // Replace with your API URL
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(myWords),  // Convert JavaScript object to JSON string
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const result = await response.json();
-      message.success(`word ${result.word} added successfully!`);
-    } catch (error) {
-      console.error("Error posting data:", error);
-      message.error('Failed to add word. Please try again.');
-    }
-  };
-
   const columns = [
     {
       title: 'ID',
@@ -116,7 +90,7 @@ function App() {
             {/* {loading && <Spin size="large" />} */}
 
             {showTable && !loading && (
-              <Table columns={columns} dataSource={data} pagination={false} style={{marginBottom: '30px'}} />
+              <Table columns={columns} dataSource={data} pagination={false} className="word-table"/>
             )}
           </Content>
           <Footer className="footer-style">by Newords!</Footer>
